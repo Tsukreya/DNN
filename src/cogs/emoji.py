@@ -54,8 +54,8 @@ class Emoji(commands.Cog):
             channel_id = msg_link_match.group(2)
             message_id = msg_link_match.group(3)
             
-            if (guild_id not in self.bot.dnn_cache.guild_cache) or (not self.bot.dnn_cache.guild_cache[guild_id]['users'][msg.author.id]):
-                return # user does not have access to guild
+            if (int(guild_id) not in self.bot.dnn_cache.guild_cache) or (msg.author.id not in self.bot.dnn_cache.guild_cache[int(guild_id)]['users']):
+               return # user does not have access to guild
 
             channel = self.bot.get_channel(int(channel_id))
 
